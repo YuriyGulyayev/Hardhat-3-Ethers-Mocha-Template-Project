@@ -1,0 +1,17 @@
+/* Based on https://github.com/tsconfig/bases/blob/501da2bcd640cf95c95805783e1012b992338f28/bases/node22.json */
+{
+  "compilerOptions": {
+    "lib": ["es2023"],
+    "module": "node16",
+    "target": "es2022",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node16",
+
+    // [Comment-202603122]
+    // This folder name exists in multiple places.
+    // [/Comment-202603122]
+    "outDir": "dist"
+  }
+}

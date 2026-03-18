@@ -1,0 +1,17 @@
+{
+   "extends": "solhint:recommended",
+   "rules": {
+      "function-max-lines": "off",
+      "no-unused-private-funcs": "warn",
+      "func-param-name-mixedcase": "warn",
+      "immutable-vars-naming": ["warn", {"immutablesAsConstants": false}],
+      "modifier-name-mixedcase": "warn",
+      "private-vars-leading-underscore": ["warn", {"strict": true}],
+      "gas-length-in-loops": "warn",
+      "gas-strict-inequalities": "off",
+      "foundry-no-block-time-number": "warn",
+      "avoid-low-level-calls": "off",
+      "func-visibility": ["warn", {"ignoreConstructors": true}],
+      "no-inline-assembly": "off"
+   }
+}

@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+
+# This script creates a new Hardhat project.
+# Execute this script once.
+
+main()
+{
+   prepare
+   cd -- "${scriptFolderPath}.."
+   # export NODE_ENV=production
+   npx hardhat --init
+   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+}
+
+prepare()
+{
+   set -e
+   # shopt -s inherit_errexit
+   # set -o pipefail
+   shopt -s extglob
+   declare -g -r scriptFolderPath="${BASH_SOURCE[0]%%+([!/])}"
+}
+
+main

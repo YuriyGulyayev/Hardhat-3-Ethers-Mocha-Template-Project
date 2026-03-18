@@ -1,0 +1,30 @@
+/node_modules
+
+# Python virtual environment.
+# todo-2 Note that Python 3.13+ by default creates a .gitignore file within the virtual environment
+# todo-2 that causes the entire directory to be ignored by the Git source control manager.
+# todo-2 So delete this entry from here when I get Python 3.13+.
+# todo-2 Or maybe only comment it out and explain things in a comment.
+/.venv
+
+# Hardhat compilation (v2) support directory.
+/cache
+
+# Hardhat Build Artifacts.
+/artifacts
+
+# Typechain output.
+/types
+
+# Comment-202603122 applies.
+/dist
+
+# Hardhat coverage reports.
+/coverage
+
+# Hardhat Ignition default folder for deployments against a local node.
+# Issue. This is Git-ignored in a Hardhat 2 generated project, but not in Hardhat 3.
+/ignition/deployments/chain-31337
+
+# pnpm deploy output.
+/bundle
