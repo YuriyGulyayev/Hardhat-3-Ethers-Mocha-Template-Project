@@ -1,3 +1,5 @@
+As mentioned in ToDo-202603173-2, Slither does not currently work.
+
 ### About Slither
 
 - Slither is a Python package.
