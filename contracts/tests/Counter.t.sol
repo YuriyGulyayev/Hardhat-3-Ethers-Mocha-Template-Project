@@ -8,7 +8,12 @@ import {Counter} from "../production/Counter.sol";
 // use the same syntax and offer the same functionality.
 
 contract CounterTest is Test {
+   /// @dev
+   /// [Comment-202603184]
+   /// This magic number exists in multiple places.
+   /// [/Comment-202603184]
    uint256 constant private _DEFAULT_X = 1234;
+
    Counter immutable private _counter;
 
    // function setUp() public {

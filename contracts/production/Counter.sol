@@ -29,7 +29,7 @@ contract Counter {
 
    /// @notice This is to make contract bytecode unique and therefore unknown to the blockchain.
    /// Because otherwise deployment to a live blockchain would fail.
-   function dummyFunction() external pure returns(uint256) {
+   function getMagicNumber() external pure returns(uint256) {
       return 202603152;
    }
 }
