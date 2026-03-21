@@ -2,12 +2,7 @@
 
 import {configVariable, defineConfig} from "hardhat/config";
 import hardhatToolboxMochaEthersPlugin from "@nomicfoundation/hardhat-toolbox-mocha-ethers";
-
-// #endregion
-// #region
-
-/** This account holds no ETH. It's used to help you to not forget to explicitly specify each transaction sender account. */
-const dummySigner1PrivateKey = "0xd0e6977c616b009a029cc707df36de114da5570b5ff5f9dc64e7d24d6f474ad8";
+import {Helpers} from "./src/Helpers.ts";
 
 // #endregion
 // #region
@@ -30,18 +25,19 @@ export default defineConfig(
 
       solidity: {
          profiles: {
+            // I dislike the idea of using the default profile, because using different profiles for development and production
+            // can result in missing issues during the development.
+            // So I have poizoned this profile configuration.
             default: {
-               // I dislike the idea of using the default profile, because using different profiles for development and production
-               // can result in missing issues during the development.
-               // So poizoning this profile configuration.
                version: "0.5.1",
             },
+
             production: {
                compilers: [
                   {
                      version: "0.8.29",
                      settings: {
-                        // todo-3 Is this parameter going to eventually become the default?
+                        // todo-2 Is this parameter going to eventually become the default?
                         viaIR: true,
 
                         optimizer: {
@@ -64,8 +60,12 @@ export default defineConfig(
 
       test: {
          mocha: {
-            parallel: true,
-            timeout: 60 * 60 * 1e3,
+            // [Comment-202603194]
+            // This typically has to be `false` when running tests against an out-of-process network.
+            // [/Comment-202603194]
+            parallel: Helpers.parseBooleanEnvironmentVariable("MOCHA_IS_PARALLEL", true),
+
+            timeout: 24 * 60 * 60 * 1e3,
          },
       },
 
@@ -153,7 +153,7 @@ export default defineConfig(
             chainType: "l1",
             chainId: 11155111,
             gasMultiplier: 1.1,
-            accounts: [dummySigner1PrivateKey, configVariable("ETHERS_MOCHA_TEMPLATE_PROJECT_DEVELOPMENT_ETHEREUM_ACCOUNT_1_PRIVATE_KEY"),],
+            accounts: [configVariable("ETHERS_MOCHA_TEMPLATE_PROJECT_DEVELOPMENT_ETHEREUM_ACCOUNT_1_PRIVATE_KEY"),],
             url: "https://ethereum-sepolia.publicnode.com",
          },
       },
