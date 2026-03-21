@@ -5,13 +5,11 @@ import hre from "hardhat";
 export class Main implements AsyncDisposable {
    private _networkConnection: NetworkConnection<ChainType> | undefined;
 
-   public static async create() {
-      const main_ = new Main();
-      main_._networkConnection = await hre.network.connect();
-      return main_;
-   }
+   public constructor() {}
 
-   private constructor() {}
+   public async prepare() {
+      this._networkConnection = await hre.network.connect();
+   }
 
    public async [Symbol.asyncDispose]() {
       const networkConnection_ = this._networkConnection;
@@ -22,14 +20,13 @@ export class Main implements AsyncDisposable {
    }
 
    public async main() {
-      // assert.strict(false);
-      console.info("%s", Main.stringifyObject(hre.config));
+      console.info("%s", Main._stringifyObject(hre.config));
       console.info();
       const signers_ = await ( this._networkConnection ! ).ethers.getSigners();
-      console.info("%s", Main.stringifyObject(signers_));
+      console.info("%s", Main._stringifyObject(signers_));
    }
 
-   public static stringifyObject(value_: object) {
+   private static _stringifyObject(value_: object) {
       return (
          JSON.stringify(
             value_,
@@ -41,6 +38,7 @@ export class Main implements AsyncDisposable {
 }
 
 {
-   await using main_ = await Main.create();
+   await using main_ = new Main();
+   await main_.prepare();
    await main_.main();
 }
