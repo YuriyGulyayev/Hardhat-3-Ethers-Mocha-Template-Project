@@ -1,14 +1,12 @@
 // #region Imports
 
-// import {setTimeout} from "node:timers/promises";
 import {expect} from "chai";
 import {describe, before, after, it} from "mocha";
-import type {EventLog} from "ethers";
 import type {NetworkConnection} from "hardhat/types";
-// import type {HardhatEthersSigner} from "@nomicfoundation/hardhat-ethers/types"
+import type {HardhatEthersSigner} from "@nomicfoundation/hardhat-ethers/types"
 import hre from "hardhat";
 import {Helpers} from "../../src/Helpers.ts";
-import counterModule from "../../ignition/modules/Counter.ts";
+import {ContractDeploymentHelpers} from "../../ignition/src/ContractDeploymentHelpers.ts";
 
 // #endregion
 // #region `describe`
@@ -16,8 +14,19 @@ import counterModule from "../../ignition/modules/Counter.ts";
 describe("Counter", () => {
    // #region Data
 
+   /** Comment-202603184 applies. */
+   const defaultX_ = 1234n;
+
    let networkConnection_: NetworkConnection | undefined;
-   // let signers_: HardhatEthersSigner[];
+   let signers_: HardhatEthersSigner[];
+
+   // #endregion
+   // #region `deployContracts_`
+
+   const deployContracts_ =
+      async () => {
+         return ContractDeploymentHelpers.deployProductionContracts( networkConnection_ ! );
+      };
 
    // #endregion
    // #region `before`
@@ -25,7 +34,8 @@ describe("Counter", () => {
    before(
       async () => {
          networkConnection_ = await hre.network.connect();
-         // signers_ = await networkConnection_.ethers.getSigners();
+         signers_ = await networkConnection_.ethers.getSigners();
+         // console.info("%s", `202603193 ${signers_.length}");
       }
    );
 
@@ -46,15 +56,11 @@ describe("Counter", () => {
    // #region `it`
 
    it("Shall emit the `Increment` event when calling `inc`.", async () => {
-      // const defaultX_ = 1234n;
-      //      
       // const counter_ = await ( networkConnection_ ! ).ethers.deployContract("Counter", [defaultX_,], signers_[1]);
       // await counter_.waitForDeployment();
+      const contracts_ = await ( networkConnection_ ! ).networkHelpers.loadFixture(deployContracts_);
 
-      const contracts_ =
-         await ( networkConnection_ ! ).networkHelpers.loadFixture(deployContracts_);
-
-      // Issue. This fails when the network is configured for interval mining,
+      // Issue. This Hardhat generated code fails when the network is configured for interval mining,
       // apparently because Hardhat forgets to wait for the transaction to get mined.
       // See discussions at:
       //    https://github.com/NomicFoundation/hardhat/issues/3203
@@ -62,21 +68,18 @@ describe("Counter", () => {
       // It appears that they aren't going to fix this issue.
       // So I have refactored this to wait.
       // await expect(counter_.inc()).emit(counter_, "Increment").withArgs(1n);
-      await expect(await Helpers.waitForTransactionReceipt(contracts_.counter.inc())).emit(contracts_.counter, "Increment").withArgs(1n);
+      await expect(await Helpers.waitForTransactionReceipt(contracts_.counter.connect(signers_[2]).inc())).emit(contracts_.counter, "Increment").withArgs(1n);
    });
 
    // #endregion
    // #region `it`
 
    it("The sum of the `Increment` events shall match the current value minus the initial value.", async () => {
-      const defaultX_ = 1234n;
       const by_ = 5n;
+      const contracts_ = await ( networkConnection_ ! ).networkHelpers.loadFixture(deployContracts_);
 
-      const contracts_ =
-         await ( networkConnection_ ! ).networkHelpers.loadFixture(deployContracts_);
-
-      // Issue. In case we are running against the in-process network, without this, near Comment-202603151
-      // we would query events occurred before this test.
+      // Issue. In case we are running against the in-process network, without this forced block creation,
+      // near Comment-202603151, we would query events occurred before this test.
       await ( networkConnection_ ! ).provider.request({method: "evm_mine",});
 
       const initialBlockNumber_ = await ( networkConnection_ ! ).ethers.provider.getBlockNumber();
@@ -84,13 +87,13 @@ describe("Counter", () => {
       // Running a series of increments.
       for( let incrementCounter_ = 1; incrementCounter_ <= 3; ++ incrementCounter_ ) {
          // const dateTimeStamp1_ = Date.now();
-         await Helpers.waitForTransactionReceipt(contracts_.counter.incBy(incrementCounter_));
+         await Helpers.waitForTransactionReceipt(contracts_.counter.connect(signers_[2]).incBy(incrementCounter_));
          // console.log("%d", Date.now() - dateTimeStamp1_);
       }
 
       // [Comment-202603151/]
       const events_ =
-         await contracts_.counter.queryFilter(contracts_.counter.filters.Increment(), initialBlockNumber_, "latest") as EventLog[];
+         await contracts_.counter.queryFilter(contracts_.counter.filters.Increment(), initialBlockNumber_, "latest");
 
       // Checking that the aggregated events match the current value.
       let total_ = 0n;
@@ -104,22 +107,11 @@ describe("Counter", () => {
    // #region `it`
 
    // In case we are running against an out-of-process network, this last test is needed to reset its state.
-   // Otherwise our tests would not necessarily succeed next time,
-   // provided you do not restart the out-of-process network and/or do not delete `ignition/deployments/chain-31337`.
+   // Otherwise, if you run the tests again, they would not necessarily succeed.
    it("Blockchain state reset.", async () => {
       // const contracts_ =
          await ( networkConnection_ ! ).networkHelpers.loadFixture(deployContracts_);
    });
-
-   // #endregion
-   // #region `deployContracts_`
-
-   const deployContracts_ =
-      async () => {
-         const contracts_ =
-            await ( networkConnection_ ! ).ignition.deploy(counterModule);
-         return contracts_;
-      }
 
    // #endregion
 });
