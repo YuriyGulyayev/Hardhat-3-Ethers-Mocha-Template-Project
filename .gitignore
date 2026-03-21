@@ -23,7 +23,7 @@
 /coverage
 
 # Hardhat Ignition default folder for deployments against an out-of-process Hardhat node.
-# Issue. I added this folder. It's Git-ignored by default in a Hardhat 2-generated project.
+# Issue. I've added this folder. It's Git-ignored by default in a Hardhat 2-generated project.
 # They could have forgotten to include it in Hardhat 3.
 /ignition/deployments/chain-31337
 
