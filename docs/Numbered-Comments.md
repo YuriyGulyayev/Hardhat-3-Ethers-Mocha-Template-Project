@@ -55,12 +55,13 @@ Similarly, ToDos can be written in the same format:
 The last number, `1` in the above case, is a ToDo priority.
 We recommend using the following priorities:
 - `0` : to do immediately.
-- `1` : to do very soon, before the next release.
-- `2` : to do soon after the next release.
+- `1` : to do soon, usually before the next release.
+- `2` : to do later, usually after the next release.
 - `3` : to do some day, low priority.
 - `4` : rarely used for a not-any-time-soon todo, such as do something about a timestamp overflow in 100 years.
 - `10` through `14` : similar to respective priorities `0` through `4`. Used for todos in (1) commented code; (2) legacy docs that are no longer correct. These todos are to be done if we decide to uncomment the code or rewrite the docs.
-- `0-` through `4-` ; `10-` through `14-` : don't do
+- `0?` through `4?` ; `10?` through `14?` : maybe don't do.
+- `0-` through `4-` ; `10-` through `14-` : don't do.
 - `+` (without digits) : done.
 
 We use the same priorities for non-numbeted todos as well, for example:
