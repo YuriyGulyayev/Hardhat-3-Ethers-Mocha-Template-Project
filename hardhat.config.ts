@@ -1,8 +1,8 @@
 // #region
 
-import {configVariable, defineConfig} from "hardhat/config";
+import {configVariable, defineConfig,} from "hardhat/config";
 import hardhatToolboxMochaEthersPlugin from "@nomicfoundation/hardhat-toolbox-mocha-ethers";
-import {Helpers} from "./src/Helpers.ts";
+import * as Helpers from "./src/Helpers.ts";
 
 // #endregion
 // #region

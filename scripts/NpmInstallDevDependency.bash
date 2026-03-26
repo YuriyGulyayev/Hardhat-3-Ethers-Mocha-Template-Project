@@ -5,12 +5,13 @@ main()
    prepare
    if ! (( "${#}" == 1 && "${#1}" > 0 )) ; then
       echo 'Invalid command line.'
-      false
+      playErrorSound
+      exit
    fi
    cd -- "${scriptFolderPath}.."
    export NODE_ENV=production
    npm install '--production=false' '--min-release-age=7' --strict-peer-deps --prefer-dedupe --save-dev -- "${1}"
-   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+   playSuccessSound
 }
 
 prepare()

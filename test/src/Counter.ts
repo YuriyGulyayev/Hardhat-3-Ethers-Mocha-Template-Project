@@ -1,12 +1,12 @@
 // #region Imports
 
-import {expect} from "chai";
-import {describe, before, after, it} from "mocha";
-import type {NetworkConnection} from "hardhat/types";
-import type {HardhatEthersSigner} from "@nomicfoundation/hardhat-ethers/types"
+import {expect,} from "chai";
+import {describe, before, after, it,} from "mocha";
+import type {NetworkConnection,} from "hardhat/types";
+import type {HardhatEthersSigner,} from "@nomicfoundation/hardhat-ethers/types";
 import hre from "hardhat";
-import {Helpers} from "../../src/Helpers.ts";
-import {ContractDeploymentHelpers} from "../../ignition/src/ContractDeploymentHelpers.ts";
+import * as EthersHelpers from "../../src/EthersHelpers.ts";
+import * as ContractDeploymentHelpers from "../../ignition/src/ContractDeploymentHelpers.ts";
 
 // #endregion
 // #region `describe`
@@ -46,7 +46,7 @@ describe("Counter", () => {
       async () => {
          const networkConnectionCopy_ = networkConnection_;
          if(networkConnectionCopy_ != undefined) {
-            networkConnection_ = undefined
+            networkConnection_ = undefined;
             await networkConnectionCopy_.close();
          }
       }
@@ -68,7 +68,7 @@ describe("Counter", () => {
       // It appears that they aren't going to fix this issue.
       // So I have refactored this to wait.
       // await expect(counter_.inc()).emit(counter_, "Increment").withArgs(1n);
-      await expect(await Helpers.waitForTransactionReceipt(contracts_.counter.connect(signers_[2]).inc())).emit(contracts_.counter, "Increment").withArgs(1n);
+      await expect(await EthersHelpers.waitForTransactionReceipt(contracts_.counter.connect(signers_[2]).inc())).emit(contracts_.counter, "Increment").withArgs(1n);
    });
 
    // #endregion
@@ -87,7 +87,7 @@ describe("Counter", () => {
       // Running a series of increments.
       for( let incrementCounter_ = 1; incrementCounter_ <= 3; ++ incrementCounter_ ) {
          // const dateTimeStamp1_ = Date.now();
-         await Helpers.waitForTransactionReceipt(contracts_.counter.connect(signers_[2]).incBy(incrementCounter_));
+         await EthersHelpers.waitForTransactionReceipt(contracts_.counter.connect(signers_[2]).incBy(incrementCounter_));
          // console.log("%d", Date.now() - dateTimeStamp1_);
       }
 
@@ -110,7 +110,7 @@ describe("Counter", () => {
    // Otherwise, if you run the tests again, they would not necessarily succeed.
    it("Blockchain state reset.", async () => {
       // const contracts_ =
-         await ( networkConnection_ ! ).networkHelpers.loadFixture(deployContracts_);
+      await ( networkConnection_ ! ).networkHelpers.loadFixture(deployContracts_);
    });
 
    // #endregion

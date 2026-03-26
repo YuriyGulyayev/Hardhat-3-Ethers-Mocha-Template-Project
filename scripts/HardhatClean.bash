@@ -6,7 +6,7 @@ main()
    cd -- "${scriptFolderPath}.."
    export NODE_ENV=production
    npx hardhat clean --build-profile production
-   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+   playSuccessSound
 }
 
 prepare()

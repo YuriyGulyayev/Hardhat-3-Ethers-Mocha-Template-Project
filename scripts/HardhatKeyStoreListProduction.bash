@@ -6,7 +6,7 @@ main()
    cd -- "${scriptFolderPath}.."
    export NODE_ENV=production
    npx hardhat keystore list
-   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+   playSuccessSound
 }
 
 prepare()

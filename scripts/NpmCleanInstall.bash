@@ -6,7 +6,7 @@ main()
    cd -- "${scriptFolderPath}.."
    export NODE_ENV=production
    npm clean-install '--production=false' --strict-peer-deps --prefer-dedupe
-   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+   playSuccessSound
 }
 
 prepare()

@@ -5,7 +5,7 @@ import {network} from "hardhat";
 const {ethers} = await network.connect({
    network: "hardhatEdrSimulatedOp",
 
-   // Issue. Isn't this already specified in config?
+   // Issue. Isn't this already specified in the Hardhat config file?
    chainType: "op",
 });
 

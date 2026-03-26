@@ -3,17 +3,29 @@
 /* Based on https://github.com/tsconfig/bases/blob/501da2bcd640cf95c95805783e1012b992338f28/bases/node22.json */
 {
    "compilerOptions": {
-      "lib": ["es2023"],
+      // todo-2 It appears that in TypeScript 6+, this is "esnext" by default. Comment this out?
+      "lib": ["es2023",],
+
+      // todo-2 In TypeScript 6+, this is "esnext" by default. Comment this out?
       "module": "node16",
+
+      // todo-2 In TypeScript 6+, this is the most recent supported ECMAScript spec version by default, which is currently "es2025". Comment this out?
       "target": "es2022",
+
+      // todo-2 In TypeScript 6+, this is `true` by default. Comment this out?
       "strict": true,
-      "esModuleInterop": true,
+
+      // // This is `true` by default.
+      // "esModuleInterop": true,
+
       "skipLibCheck": true,
+
+      // todo-2 In TypeScript 6+, this is not necessarily needed, provided `module` is correct.
       "moduleResolution": "node16",
 
       // [Comment-202603122]
       // This folder name exists in multiple places.
       // [/Comment-202603122]
-      "outDir": "dist"
-   }
+      "outDir": "dist",
+   },
 }

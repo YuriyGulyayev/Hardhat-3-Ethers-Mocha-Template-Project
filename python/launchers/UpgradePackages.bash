@@ -7,7 +7,7 @@ main()
    prepare
    cd -- "${scriptFolderPath}../.."
    ./.venv/bin/python3 -m pip install --upgrade -r requirements.txt
-   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+   playSuccessSound
 }
 
 prepare()

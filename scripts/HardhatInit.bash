@@ -8,7 +8,7 @@ main()
    cd -- "${scriptFolderPath}.."
    # export NODE_ENV=production
    npx hardhat --init
-   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+   playSuccessSound
 }
 
 prepare()

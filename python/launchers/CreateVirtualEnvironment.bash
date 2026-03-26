@@ -9,7 +9,7 @@ main()
    prepare
    cd -- "${scriptFolderPath}../.."
    python3 -m venv .venv
-   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+   playSuccessSound
 }
 
 prepare()

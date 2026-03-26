@@ -1,4 +1,16 @@
+# [Comment-202603263]
+# Similar folders are listed in multiple places.
+# [/Comment-202603263]
+
 /node_modules
+
+# Comment-202603122 applies.
+/dist
+
+# [Comment-202603261]
+# pnpm deploy output.
+# [/Comment-202603261]
+/bundle
 
 # Python virtual environment.
 # todo-2 Note that Python 3.13+ by default creates a .gitignore file within the virtual environment,
@@ -16,8 +28,9 @@
 # Typechain output.
 /types
 
-# Comment-202603122 applies.
-/dist
+/slither/reports
+/solhint/reports
+/eslint/reports
 
 # Hardhat coverage reports.
 /coverage
@@ -26,6 +39,3 @@
 # Issue. I've added this folder. It's Git-ignored by default in a Hardhat 2-generated project.
 # They could have forgotten to include it in Hardhat 3.
 /ignition/deployments/chain-31337
-
-# pnpm deploy output.
-/bundle

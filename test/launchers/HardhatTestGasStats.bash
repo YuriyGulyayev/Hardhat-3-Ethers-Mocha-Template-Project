@@ -12,7 +12,7 @@ main()
    # Comment-202603175 applies.
    npx hardhat test --build-profile production --gas-stats
 
-   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+   playSuccessSound
 }
 
 prepare()

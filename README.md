@@ -69,7 +69,7 @@ Note that there are also scripts out there to target the production keystore. Fe
 
 ### Creating a New Project Like This
 
-I have already created this project, but if you were to create a new one like this, you would need to create a folder for it, create the `scripts` child folder, copy the `scripts/HardhatInit.bash` file to it, and execute it. When prompted, choose `A TypeScript Hardhat project using Mocha and Ethers.js`. In all other prompts, leave the default choices.
+- I have already created this project, but if you were to create a new one like this, you would need to create a folder for it, create the `scripts` child folder, copy the `scripts/HardhatInit.bash` file to it, and execute it. When prompted, choose `A TypeScript Hardhat project using Mocha and Ethers.js`. In all other prompts, leave the default choices.
 
 ### Smart Contracts
 
@@ -153,6 +153,11 @@ Then in a different terminal:
 ./ignition/launchers/HardhatIgnitionDeployVerifyCounterSepolia.bash
 ```
 
+### TypeScript Static Code Analysis
+
+- ESLint.\
+See `eslint/docs/ESLint-Manual.md`.
+
 ### Other Files
 
-There are some other files in the project that this document does not mention. You might want to explore all of them.
+- There are some other files in the project that this document does not mention. You might want to explore all of them.

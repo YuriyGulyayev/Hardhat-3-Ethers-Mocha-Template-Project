@@ -16,12 +16,27 @@ As mentioned in ToDo-202603173-2, Slither does not currently work.
 slither path/to/hardhat-project
 ```
 
-- Slither supports a number of command line parameters, some of which the `slither/launchers/Slither.bash` script provides.
+- But don't execute Slither directly; execute this instead:
+```
+./slither/launchers/Slither.bash
+```
 
-- Don't execute Slither directly; execute the script instead.\
-It will generate a markdown report file in the folder above the project root folder.
+### Slither Reports
 
-- Open the file in VS Code and press Ctrl+Shift+V to open Markdown Preview. In there, you can click links to navigate to relevant locations in Solidity source files.
+- Slither report is saved to `slither/reports/SlitherReport2.txt`.
+
+- If the report file already exists it will be renamed to `SlitherReport1.txt`. If the latter also exists it will be trashed beforehand.
+
+- To compare the last 2 reports, execute:
+```
+./slither/launchers/DiffSlitherReports.bash
+```
+
+- Open the report file in VS Code and press Ctrl+Shift+V to open Markdown Preview. In there, you can click links to navigate to relevant locations in Solidity source files.
+
+### Slither Configuration
+
+- `slither.config.json` is the Slither config file.
 
 ### Slither Docs
 

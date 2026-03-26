@@ -10,7 +10,7 @@ main()
    export MOCHA_IS_PARALLEL=false
    
    npx hardhat test --build-profile production --network localhost
-   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+   playSuccessSound
 }
 
 prepare()

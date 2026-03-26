@@ -5,7 +5,7 @@ main()
    prepare
    cd -- "${scriptFolderPath}../.."
    export NODE_ENV=production
-   npx hardhat ignition deploy --build-profile production --network sepolia --verify ignition/modules/Counter.ts
+   npx eslint --init
    playSuccessSound
 }
 

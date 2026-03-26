@@ -6,51 +6,54 @@ import NodeFs from "node:fs";
 import hre from "hardhat";
 
 // #endregion
-// #region `IgnitionHelpers`
+// #region Data
 
-export class IgnitionHelpers {
-   // #region Data
+let _warnIfDeploymentStateExistsOnceWasCalled = false;
 
-   private static _warnIfDeploymentStateExistsOnceWasCalled = false;
+// #endregion
+// #region `warnIfDeploymentStateExistsOnce`
 
-   // #endregion
-   // #region `warnIfDeploymentStateExistsOnce`
-
-   /** This is a simplified and less correct implementation of Comment-202603203. */
-   public static /*async*/ warnIfDeploymentStateExistsOnce() {
-      if(IgnitionHelpers._warnIfDeploymentStateExistsOnceWasCalled) {
-         return;
-      }
-      IgnitionHelpers._warnIfDeploymentStateExistsOnceWasCalled = true;
-      const networkName_ = hre.globalOptions.network;
-      // console.info("%s", networkName_);
-      if(networkName_ == undefined) {
-         return;
-      }
-      const networkConfig_ = hre.config.networks[networkName_];
-      const networkIsInProcess_ = networkConfig_.type == "edr-simulated";
-      if(networkIsInProcess_) {
-         return;
-      }
-      // console.info("%d", networkConfig_.chainId);
-      const deploymentId_ = `chain-${networkConfig_.chainId}`;
-      // console.info("%s", deploymentId_);
-      const deploymentStateFolderPath_ = NodePath.join(( import.meta.dirname ! ), "../deployments", deploymentId_);
-      // console.info("%s", deploymentStateFolderPath_);
-      if(NodeFs.existsSync(deploymentStateFolderPath_)) {
-         // [Comment-202603205/]
-         console.warn("%s", `${NodeOs.EOL}Warning. The \`ignition/deployments/${deploymentId_}\` folder already exists.${NodeOs.EOL}`);
-      }
+/** This is a simplified and less correct implementation of Comment-202603203. */
+export /* async */ function warnIfDeploymentStateExistsOnce() {
+   if(_warnIfDeploymentStateExistsOnceWasCalled) {
+      return;
    }
+   _warnIfDeploymentStateExistsOnceWasCalled = true;
 
-   // #endregion
-   // #region // [Comment-202603203/]
+   // Issue. `hre.globalOptions.network` type is `string`, but I have observed that it's `undefined`
+   // when not specified in the command line.
+   // So we are going to check for `undefined`. And to silence a lint there, we must specify that this variable can be `undefined`.
+   // todo-2 Check if they have fixed this variable type.
+   const networkName_ = hre.globalOptions.network as string | undefined;
 
-   // Question to ChatGPT:
-   // I need a function in typescript that checks if given the default or povided in the command line network type is such that ignition would create deployment state folder and the folder exists. If so, print a warning to the console. The typescript file containing this function will be located in the `ignition/src` subfolder in the project folder, so use the typescript file path to obtain the folder path in which deployment state folder is located. Or if possible use a designated API if one is available in Hardhat to obtain the folder path in which deployment state folder is located. Really, if possible, use designated APIs for everything. Maybe one is available to check if ignition deloyment state exists.
+   // console.info("%s", networkName_);
+   if(networkName_ == undefined) {
+      return;
+   }
+   const networkConfig_ = hre.config.networks[networkName_];
+   const networkIsInProcess_ = networkConfig_.type == "edr-simulated";
+   if(networkIsInProcess_) {
+      return;
+   }
+   // console.info("%d", networkConfig_.chainId);
+   const deploymentId_ = `chain-${networkConfig_.chainId}`;
+   // console.info("%s", deploymentId_);
+   const deploymentStateFolderPath_ = NodePath.join(import.meta.dirname, "../deployments", deploymentId_);
+   // console.info("%s", deploymentStateFolderPath_);
+   if(NodeFs.existsSync(deploymentStateFolderPath_)) {
+      // [Comment-202603205/]
+      console.warn("%s", `${NodeOs.EOL}Warning. The \`ignition/deployments/${deploymentId_}\` folder already exists.${NodeOs.EOL}`);
+   }
+}
 
-   // Answer.
-   //
+// #endregion
+// #region // [Comment-202603203/]
+
+// Question to ChatGPT:
+// I need a function in typescript that checks if given the default or povided in the command line network type is such that ignition would create deployment state folder and the folder exists. If so, print a warning to the console. The typescript file containing this function will be located in the `ignition/src` subfolder in the project folder, so use the typescript file path to obtain the folder path in which deployment state folder is located. Or if possible use a designated API if one is available in Hardhat to obtain the folder path in which deployment state folder is located. Really, if possible, use designated APIs for everything. Maybe one is available to check if ignition deloyment state exists.
+
+// Answer.
+//
 // I’m checking the current Hardhat 3 Ignition APIs and folder conventions so the function uses documented surfaces where they exist and only falls back to path logic where necessary.
 //
 // I couldn’t verify a public Hardhat/Ignition API for “give me the deployment-state directory” or “tell me whether Ignition state already exists.” The public pieces I could verify are: Hardhat exposes the selected/default network through the HRE and network.connect(), network configs have type values edr-simulated or http, Ignition stores deployment artifacts under ./ignition/deployments, the default deployment id is chain-<chainId>, and journal.jsonl is the main state file. Also, for the in-memory network, the CLI only writes deployment info to disk when --write-localhost-deployment is enabled, and its default is false. (Hardhat)
@@ -203,8 +206,5 @@ export class IgnitionHelpers {
 // First, if you deploy with --deployment-id <id>, you need to pass that same id into the function; otherwise it will check the default chain-<chainId> folder. Ignition’s default folder naming is chain-<chainId>, but custom deployment ids override that. (Hardhat)
 // Second, the docs are slightly awkward around simulated networks: one guide broadly says Ignition creates a deployment folder, while the CLI reference says in-memory deployments are only written to disk with --write-localhost-deployment, default false. The function above follows the CLI reference for edr-simulated networks. (Hardhat)
 // If you want, I can adapt this into a helper that throws instead of warning, or one that also detects --deployment-id from your task arguments.
-
-   // #endregion
-}
 
 // #endregion

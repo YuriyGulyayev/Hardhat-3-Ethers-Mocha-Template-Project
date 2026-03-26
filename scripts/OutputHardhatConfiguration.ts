@@ -1,11 +1,11 @@
 // import assert from "node:assert";
-import type {ChainType, NetworkConnection} from "hardhat/types";
+import type {ChainType, NetworkConnection,} from "hardhat/types";
 import hre from "hardhat";
 
 export class Main implements AsyncDisposable {
    private _networkConnection: NetworkConnection<ChainType> | undefined;
 
-   public constructor() {}
+   // public constructor() {}
 
    public async prepare() {
       this._networkConnection = await hre.network.connect();
@@ -30,7 +30,7 @@ export class Main implements AsyncDisposable {
       return (
          JSON.stringify(
             value_,
-            (_key_, value2_) => ((typeof value2_ == "bigint") ? `${value2_}n` : value2_),
+            (_key_, value2_: unknown) => ((typeof value2_ == "bigint") ? `${value2_}n` : value2_),
             3
          )
       );

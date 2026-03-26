@@ -9,7 +9,7 @@ main()
    # Comment-202603175 applies.
    npx hardhat ignition deploy --build-profile production ignition/modules/Counter.ts
 
-   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+   playSuccessSound
 }
 
 prepare()

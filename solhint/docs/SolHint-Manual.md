@@ -1,19 +1,28 @@
-### SolHint Configuration
-
-- `.solhint.json` is the SolHint config file.
-
 ### How to Execute SolHint
 
-- Execute command.
+- Execute:
 ```bash
 ./solhint/launchers/SolHint.bash
 ```
 
-- Review the generated report file saved to the folder above the project root folder.
+### SolHint Reports
+
+- SolHint report is saved to `solhint/reports/SolHintReport2.txt`.
+
+- If the report file already exists it will be renamed to `SolHintReport1.txt`. If the latter also exists it will be trashed beforehand.
+
+- To compare the last 2 reports, execute:
+```
+./solhint/launchers/DiffSolHintReports.bash
+```
+
+### SolHint Configuration
+
+- `.solhint.json` is the SolHint config file.
 
 ### SolHint Docs
 
-todo-1 Provide links here.
+- todo-2 Provide links here.
 
 ### Hardhat Support
 

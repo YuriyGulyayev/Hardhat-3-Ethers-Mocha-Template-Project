@@ -5,14 +5,15 @@ main()
    prepare
    if ! (( "${#}" == 1 && "${#1}" > 0 )) ; then
       echo 'Invalid command line.'
-      false
+      playErrorSound
+      exit
    fi
    cd -- "${scriptFolderPath}.."
    export NODE_ENV=production
    echo "Checking if the given key already exists in the keystore."
    npx hardhat keystore get -- "${1}" || true
    npx hardhat keystore set --force -- "${1}"
-   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+   playSuccessSound
 }
 
 prepare()

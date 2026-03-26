@@ -14,7 +14,7 @@ main()
    # [/Comment-202603175]
    npx hardhat test --build-profile production
    
-   pw-play /usr/share/sounds/freedesktop/stereo/dialog-information.oga &
+   playSuccessSound
 }
 
 prepare()
