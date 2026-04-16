@@ -16,7 +16,7 @@ main()
    fi
    export NODE_ENV=production
    local esLintExitStatusCode_=0
-   npx eslint --no-color "--output-file=${esLintReport2FilePath_}" '--max-warnings=0' . || esLintExitStatusCode_="${?}"
+   npx eslint --no-color "--output-file=${esLintReport2FilePath_}" --max-warnings=0 . || esLintExitStatusCode_="${?}"
    readonly esLintExitStatusCode_
    if (( esLintExitStatusCode_ == 0 )) ; then
       playSuccessSound

@@ -10,7 +10,7 @@ main()
    fi
    cd -- "${scriptFolderPath}.."
    export NODE_ENV=production
-   npm install '--production=false' '--min-release-age=7' --strict-peer-deps --prefer-dedupe --save-dev -- "${1}"
+   npm install --production=false --min-release-age=7 --strict-peer-deps --prefer-dedupe --save-dev -- "${1}"
    playSuccessSound
 }
 

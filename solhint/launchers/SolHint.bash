@@ -16,7 +16,7 @@ main()
    fi
    export NODE_ENV=production
    local solHintExitStatusCode_=0
-   { npx solhint --noPoster --disc '--max-warnings=0' 'contracts/**/*.sol' || solHintExitStatusCode_="${?}" ; } >> "${solHintReport2FilePath_}"
+   { npx solhint --noPoster --disc --max-warnings=0 'contracts/**/*.sol' || solHintExitStatusCode_="${?}" ; } >> "${solHintReport2FilePath_}"
    readonly solHintExitStatusCode_
    if (( solHintExitStatusCode_ == 0 )) ; then
       playSuccessSound

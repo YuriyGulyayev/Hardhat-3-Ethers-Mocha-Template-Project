@@ -5,7 +5,7 @@ main()
    prepare
    cd -- "${scriptFolderPath}.."
    export NODE_ENV=production
-   npm install '--production=false' '--min-release-age=7' --strict-peer-deps --prefer-dedupe
+   npm install --production=false --min-release-age=7 --strict-peer-deps --prefer-dedupe
    playSuccessSound
 }
 

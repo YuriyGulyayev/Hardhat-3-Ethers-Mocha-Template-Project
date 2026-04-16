@@ -5,7 +5,7 @@ main()
    prepare
    cd -- "${scriptFolderPath}.."
    export NODE_ENV=production
-   npm outdated '--production=false' '--min-release-age=7' || (( "${?}" == 1 ))
+   npm outdated --production=false --min-release-age=7 || (( "${?}" == 1 ))
 
    # [Comment-202603185/]
    echo $'\n'"Warning. Manually check if any \`github:...\` packages are outdated." 1>&2

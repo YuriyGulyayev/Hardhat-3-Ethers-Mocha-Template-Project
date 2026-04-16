@@ -5,7 +5,7 @@ main()
    prepare
    cd -- "${scriptFolderPath}.."
    export NODE_ENV=production
-   npm clean-install '--production=false' --strict-peer-deps --prefer-dedupe
+   npm clean-install --production=false --strict-peer-deps --prefer-dedupe
    playSuccessSound
 }
 
