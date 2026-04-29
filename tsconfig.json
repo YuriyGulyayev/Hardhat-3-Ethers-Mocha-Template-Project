@@ -37,6 +37,7 @@
       // // This is `true` by default.
       // "esModuleInterop": true,
 
+      "verbatimModuleSyntax": true,
       "skipLibCheck": true,
 
       // // todo-2 In TypeScript 6+, this is not necessarily needed, provided `module` is correct.
@@ -46,8 +47,5 @@
       // This folder name exists in multiple places.
       // [/Comment-202603122]
       "outDir": "dist",
-
-      // // todo-2 Do we need this?
-      // "verbatimModuleSyntax": true,
    },
 }
