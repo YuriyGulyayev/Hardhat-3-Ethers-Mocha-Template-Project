@@ -5,7 +5,6 @@ main()
    prepare
    cd -- "${scriptFolderPath}../.."
    local -r slitherReportsFolderPath_="slither/reports/"
-   mkdir --parents -- "${slitherReportsFolderPath_}"
    local -r slitherReport1FileName_=SlitherReport1.txt
    local -r slitherReport1FilePath_="${slitherReportsFolderPath_}${slitherReport1FileName_}"
    local -r slitherReport2FileName_=SlitherReport2.txt
@@ -13,9 +12,11 @@ main()
    if [[ -f "${slitherReport2FilePath_}" ]] ; then
       gio trash --force -- "${slitherReport1FilePath_}"
       mv --no-clobber -- "${slitherReport2FilePath_}" "${slitherReport1FilePath_}"
+   else
+      mkdir --parents -- "${slitherReportsFolderPath_}"
    fi
    export NODE_ENV=production
-   local slitherExitStatusCode_=0
+   local -i slitherExitStatusCode_=0
 
    # [ToDo-202603173-2]
    # As of Mar 2026, this doesn't work because Slither doesn't support Hardhat 3.
@@ -23,7 +24,7 @@ main()
    # It could be necessary to pass the `--force` flag to Hardhat.
    # Revisit command line arguments. Consider moving most of them to the config file.
    # [/ToDo-202603173-2]
-   { ./.venv/bin/slither --compile-custom-build 'npx hardhat build --build-profile production' --filter-paths /node_modules/ --show-ignored-findings --checklist . || slitherExitStatusCode_="${?}" ; } >> "${slitherReport2FilePath_}"
+   { ./.venv/bin/slither --compile-custom-build 'npx hardhat build --build-profile production' --filter-paths /node_modules/ --show-ignored-findings --checklist . || slitherExitStatusCode_="${?}" ; } &>> "${slitherReport2FilePath_}"
 
    readonly slitherExitStatusCode_
    if (( slitherExitStatusCode_ == 0 )) ; then

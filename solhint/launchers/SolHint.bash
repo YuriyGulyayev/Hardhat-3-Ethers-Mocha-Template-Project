@@ -5,7 +5,6 @@ main()
    prepare
    cd -- "${scriptFolderPath}../.."
    local -r solHintReportsFolderPath_="solhint/reports/"
-   mkdir --parents -- "${solHintReportsFolderPath_}"
    local -r solHintReport1FileName_=SolHintReport1.txt
    local -r solHintReport1FilePath_="${solHintReportsFolderPath_}${solHintReport1FileName_}"
    local -r solHintReport2FileName_=SolHintReport2.txt
@@ -13,10 +12,12 @@ main()
    if [[ -f "${solHintReport2FilePath_}" ]] ; then
       gio trash --force -- "${solHintReport1FilePath_}"
       mv --no-clobber -- "${solHintReport2FilePath_}" "${solHintReport1FilePath_}"
+   else
+      mkdir --parents -- "${solHintReportsFolderPath_}"
    fi
    export NODE_ENV=production
-   local solHintExitStatusCode_=0
-   { npx solhint --noPoster --disc --max-warnings=0 'contracts/**/*.sol' || solHintExitStatusCode_="${?}" ; } >> "${solHintReport2FilePath_}"
+   local -i solHintExitStatusCode_=0
+   { npx solhint --noPoster --disc --max-warnings=0 'contracts/**/*.sol' || solHintExitStatusCode_="${?}" ; } &>> "${solHintReport2FilePath_}"
    readonly solHintExitStatusCode_
    if (( solHintExitStatusCode_ == 0 )) ; then
       playSuccessSound
