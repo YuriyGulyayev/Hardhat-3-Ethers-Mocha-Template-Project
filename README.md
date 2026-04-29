@@ -159,8 +159,11 @@ Then in a different terminal:
 
 ### TypeScript Static Code Analysis
 
+- Type-Checking.\
+See `typescript/docs/TypeScript-Manual.md`.
+
 - ESLint.\
-See `eslint/docs/ESLint-Manual.md`.
+See `eslint/docs/EsLint-Manual.md`.
 
 ### Other Files
 

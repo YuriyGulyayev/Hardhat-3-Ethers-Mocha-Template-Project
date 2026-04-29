@@ -36,6 +36,7 @@
 
 /slither/reports/
 /solhint/reports/
+/typescript/reports/
 /eslint/reports/
 
 # # Hardhat coverage reports.
