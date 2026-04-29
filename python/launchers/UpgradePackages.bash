@@ -13,8 +13,6 @@ main()
 prepare()
 {
    set -e
-   # shopt -s inherit_errexit
-   # set -o pipefail
    shopt -s extglob
    declare -g -r scriptFolderPath="${BASH_SOURCE[0]%%+([!/])}"
    # shellcheck source=../../shell-script-libs/ErrorHandling.bash

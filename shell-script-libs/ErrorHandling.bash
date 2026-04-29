@@ -13,11 +13,11 @@ handleError()
 {
    local -i -r commandExitStatusCode_="${?}"
    set +e
-   playErrorSound
    if (( BASH_SUBSHELL > 0 )) ; then
       set -e
       exit "${commandExitStatusCode_}"
    else
+      playErrorSound
       set -e
       exit 4
    fi
