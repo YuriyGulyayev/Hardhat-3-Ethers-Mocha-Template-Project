@@ -2,6 +2,24 @@
 
 // Based on https://github.com/tsconfig/bases/blob/501da2bcd640cf95c95805783e1012b992338f28/bases/node22.json
 {
+   // Comment-202603263 applies.
+   "exclude": [
+      // "node_modules/**",
+
+      // Comment-202603122 applies.
+      "dist/**",
+
+      // // Comment-202603261 applies.
+      // "bundle/**",
+
+      ".venv/**",
+      "cache/**",
+      "artifacts/**",
+      "types/**",
+      "coverage/**",
+      "ignition/deployments/**",
+   ],
+
    "compilerOptions": {
       // todo-2 It appears that in TypeScript 6+, this is "esnext" by default. Comment this out?
       "lib": ["es2023",],
