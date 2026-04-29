@@ -153,6 +153,7 @@ export default defineConfig(
          //    // mining: {},
          // },
 
+         // todo-0 Name networks title-cased, like "Sepolia". Also search for files named that way.
          sepolia: {
             type: "http",
             chainType: "l1",
