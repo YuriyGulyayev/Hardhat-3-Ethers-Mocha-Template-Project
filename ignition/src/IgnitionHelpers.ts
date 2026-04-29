@@ -27,7 +27,7 @@ export /* async */ function warnIfDeploymentStateExistsOnce() {
    const networkName_ = hre.globalOptions.network as string | undefined;
 
    // console.info("%s", networkName_);
-   if(networkName_ == undefined) {
+   if(networkName_ === undefined) {
       return;
    }
    const networkConfig_ = hre.config.networks[networkName_];

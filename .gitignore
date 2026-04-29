@@ -2,40 +2,49 @@
 # Similar folders are listed in multiple places.
 # [/Comment-202603263]
 
-/node_modules
+# A correct way to ignore a file:
+# /File.txt
+# !/File.txt/
+# !/File.txt/**
+# todo-2 But ask Google and retest the above.
+
+/node_modules/
 
 # Comment-202603122 applies.
-/dist
+/dist/
 
-# [Comment-202603261]
-# pnpm deploy output.
-# [/Comment-202603261]
-/bundle
+# # [Comment-202603261]
+# # pnpm deploy output.
+# # [/Comment-202603261]
+# /bundle/
 
 # Python virtual environment.
 # todo-2 Note that Python 3.13+ by default creates a .gitignore file within the virtual environment,
 # todo-2 which causes the entire directory to be ignored by Git.
 # todo-2 So when I get Python 3.13+, delete this entry from here.
 # todo-2 Or maybe only comment it out and explain things in a comment.
-/.venv
+/.venv/
 
 # Hardhat compilation support directory.
-/cache
+/cache/
 
 # Hardhat Build Artifacts.
-/artifacts
+/artifacts/
 
 # Typechain output.
-/types
+/types/
 
-/slither/reports
-/solhint/reports
-/eslint/reports
+/slither/reports/
+/solhint/reports/
+/eslint/reports/
 
-# Hardhat coverage reports.
-/coverage
+# # Hardhat coverage reports.
+# # [Comment-202604207]
+# # This is to be manually deleted instead of adding this to the Git repo.
+# # [/Comment-202604207]
+# /coverage/
 
-# Hardhat Ignition default folder for deployments against an out-of-process Hardhat node.
-# Issue. I've added this folder. It's Git-ignored by default in a Hardhat 2-generated project.
-# They could have forgotten to include it in Hardhat 3.
-/ignition/deployments/chain-31337
+# # Hardhat Ignition default folder for deployments against an out-of-process Hardhat node.
+# # It's Git-ignored by default in a Hardhat 2-generated project, but not in Hardhat 3.
+# # Comment-202604207 applies.
+# /ignition/deployments/chain-31337/

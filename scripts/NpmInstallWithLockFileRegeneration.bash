@@ -3,15 +3,13 @@
 main()
 {
    prepare
-   # todo-0 Here and elsewhere, leave this condition alone.
-   if ! (( "${#}" == 1 && "${#1}" > 0 )) ; then
-      echo 'Invalid command line.'
-      playErrorSound
-      exit
-   fi
    cd -- "${scriptFolderPath}.."
+   gio trash --force package-lock.json
+   local cutoffDateTime_
+   cutoffDateTime_="$( date '--date=7 days ago 00:00:00' --iso-8601=seconds )"
+   readonly cutoffDateTime_
    export NODE_ENV=production
-   npx hardhat keystore delete --dev -- "${1}"
+   npm install --production=false "--before=${cutoffDateTime_}" --strict-peer-deps --prefer-dedupe
    playSuccessSound
 }
 
@@ -26,4 +24,4 @@ prepare()
    source "${scriptFolderPath}../shell-script-libs/ErrorHandling.bash"
 }
 
-main "${@}"
+main

@@ -1,6 +1,6 @@
 // #region `parseBooleanEnvironmentVariable`
 
-export function parseBooleanEnvironmentVariable(environmentVariableName_: string, defaultValue_: boolean) {
+export function parseBooleanEnvironmentVariable(environmentVariableName_: string, defaultValue_?: boolean) {
    const rawValue_ = process.env[environmentVariableName_];
    switch(rawValue_) {
       case undefined:

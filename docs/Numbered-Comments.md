@@ -60,7 +60,7 @@ We recommend using the following priorities:
 - `3` : to do some day, low priority.
 - `4` : rarely used for a not-any-time-soon todo, such as do something about a timestamp overflow in 100 years.
 - `10` through `14` : similar to respective priorities `0` through `4`. Used for todos in (1) commented code; (2) legacy docs that are no longer correct. These todos are to be done if we decide to uncomment the code or rewrite the docs.
-- `0?` through `4?` ; `10?` through `14?` : maybe don't do.
+- `0?` through `4?` ; `10?` through `14?` : questionable ideas; need rethinking.
 - `0-` through `4-` ; `10-` through `14-` : don't do.
 - `+` (without digits) : done.
 

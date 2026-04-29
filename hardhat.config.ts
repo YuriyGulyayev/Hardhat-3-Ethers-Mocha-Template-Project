@@ -35,9 +35,13 @@ export default defineConfig(
             production: {
                compilers: [
                   {
+                     // todo-2 When changing this, revisit ToDo-202605013-2.
                      version: "0.8.29",
+
                      settings: {
-                        // todo-2 Is this parameter going to eventually become the default?
+                        // [ToDo-202605013-2]
+                        // Is this parameter going to eventually become the default?
+                        // [/ToDo-202605013-2]
                         viaIR: true,
 
                         optimizer: {
@@ -113,6 +117,7 @@ export default defineConfig(
             gasMultiplier: 1.1,
             // accounts: "remote",
             // url: ,
+            // timeout: ,
          },
 
          // // We don't currently need any networks like these.
@@ -154,7 +159,11 @@ export default defineConfig(
             chainId: 11155111,
             gasMultiplier: 1.1,
             accounts: [configVariable("ETHERS_MOCHA_TEMPLATE_PROJECT_DEVELOPMENT_ETHEREUM_ACCOUNT_1_PRIVATE_KEY"),],
+            // todo-0 Use a better URL, with an API key.
             url: "https://ethereum-sepolia.publicnode.com",
+
+            // todo-2 Is this value good?
+            timeout: 200_000,
          },
       },
 

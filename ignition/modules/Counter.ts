@@ -8,6 +8,8 @@ export default buildModule(
    (ignitionModuleBuilder_) => {
       IgnitionHelpers.warnIfDeploymentStateExistsOnce();
 
+      // todo-0 Try using a particular account as the deployer. See example at https://docs.moonbeam.network/builders/ethereum/dev-env/hardhat/
+
       /** Comment-202603184 applies. */
       const defaultX_ = 1234n;
 

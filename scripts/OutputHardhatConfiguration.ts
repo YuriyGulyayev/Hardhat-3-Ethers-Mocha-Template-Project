@@ -13,7 +13,7 @@ export class Main implements AsyncDisposable {
 
    public async [Symbol.asyncDispose]() {
       const networkConnection_ = this._networkConnection;
-      if(networkConnection_ != undefined) {
+      if(networkConnection_ !== undefined) {
          this._networkConnection = undefined;
          await networkConnection_.close();
       }

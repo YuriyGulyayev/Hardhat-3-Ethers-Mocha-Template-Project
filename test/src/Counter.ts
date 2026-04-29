@@ -45,7 +45,7 @@ describe("Counter", () => {
    after(
       async () => {
          const networkConnectionCopy_ = networkConnection_;
-         if(networkConnectionCopy_ != undefined) {
+         if(networkConnectionCopy_ !== undefined) {
             networkConnection_ = undefined;
             await networkConnectionCopy_.close();
          }
@@ -107,7 +107,7 @@ describe("Counter", () => {
    // #region `it`
 
    // In case we are running against an out-of-process network, this last test is needed to reset its state.
-   // Otherwise, if you run the tests again, they would not necessarily succeed.
+   // Otherwise, if you run the tests again, the behavior would not necessarily be correct.
    it("Blockchain state reset.", async () => {
       // const contracts_ =
       await ( networkConnection_ ! ).networkHelpers.loadFixture(deployContracts_);

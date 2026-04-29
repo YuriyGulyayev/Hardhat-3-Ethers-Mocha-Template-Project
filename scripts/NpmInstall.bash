@@ -4,8 +4,11 @@ main()
 {
    prepare
    cd -- "${scriptFolderPath}.."
+   local cutoffDateTime_
+   cutoffDateTime_="$( date '--date=7 days ago 00:00:00' --iso-8601=seconds )"
+   readonly cutoffDateTime_
    export NODE_ENV=production
-   npm install --production=false --min-release-age=7 --strict-peer-deps --prefer-dedupe
+   npm install --production=false "--before=${cutoffDateTime_}" --strict-peer-deps --prefer-dedupe
    playSuccessSound
 }
 

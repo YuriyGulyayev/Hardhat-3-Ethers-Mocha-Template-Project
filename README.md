@@ -6,7 +6,7 @@
 
 - This brief read-me document assumes that the reader is familiar with Hardhat 3 and other involved technologies. It does not explain the basics.
 
-- You might want to start with reviewing `README-PreGenerated.md`.
+- You might want to start with reviewing `README_PreGenerated.md`.
 
 - I extensively use numbered comments. Be sure to understand their concept. It's described in `docs/Numbered-Comments.md`.
 
@@ -42,6 +42,8 @@ Or:
 ```
 Pay attention to the warning logged near Comment-202603185.\
 If any packages are outdated, manually increase their versions in `package.json`, optionally delete `package-lock.json` and `node_modules`, execute `./scripts/NpmInstall.bash`.
+todo-0 Add a script to delete one or both. Is it actually neccessary to delete `node_modules`?
+todo-0 Revisit above text. I added a script that deletes package lock, but not node_modules.
 
 Note that there is no script to automatically upgrade any outdated NPM packages.
 
@@ -51,6 +53,7 @@ Note that there is no script to automatically upgrade any outdated NPM packages.
 ./python/launchers/UpgradePackages.bash
 ```
 You can execute the latter script again at any time to automatically upgrade any outdated Python packages.
+todo-0 Revisit the above. I have added a version number to `requirements.txt`.
 
 - Obtain an EtherScan API key. Save it to the development keystore.
 ```bash
@@ -125,6 +128,7 @@ You can execute the tests multiple times, but pay attention to the warning print
 - The Ignition deployment modules are located under `ignition/modules`. The Hardhat project initialization wizard has created them. I have refactored them.
 
 - When Ignition executes a deployment module to deploy contracts to an out-of-process network, it creates deployment state files under `ignition/deployments`. I have added the `ignition/deployments/chain-31337` folder to `.gitignore`.\
+todo-0 I have now commented it out. Reference Comment-202604207 applies.
 It's safe to deploy to the same out-of-process network multiple times, but pay attention to the warning printed near Comment-202603205.
 
 ### Deploying Smart Contracts

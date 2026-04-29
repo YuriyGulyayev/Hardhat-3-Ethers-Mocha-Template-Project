@@ -4,11 +4,14 @@ main()
 {
    prepare
    cd -- "${scriptFolderPath}.."
+   local cutoffDateTime_
+   cutoffDateTime_="$( date '--date=7 days ago 00:00:00' --iso-8601=seconds )"
+   readonly cutoffDateTime_
    export NODE_ENV=production
-   npm outdated --production=false --min-release-age=7 || (( "${?}" == 1 ))
+   npm outdated --production=false "--before=${cutoffDateTime_}" || (( "${?}" == 1 ))
 
    # [Comment-202603185/]
-   echo $'\n'"Warning. Manually check if any \`github:...\` packages are outdated." 1>&2
+   echo $'\nWarning. Manually check if any `github:...` packages are outdated.' 1>&2
    
    # playSuccessSound
 

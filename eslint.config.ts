@@ -6,6 +6,7 @@ import {globalIgnores, defineConfig,} from "eslint/config";
 
 export default defineConfig(
    // Comment-202603263 applies.
+   // todo-0 Should I specify any ignores in other files, such as `package.json` and `tsconfig.json`?
    globalIgnores(
       [
          // "node_modules/**",
@@ -13,8 +14,8 @@ export default defineConfig(
          // Comment-202603122 applies.
          "dist/**",
 
-         // Comment-202603261 applies.
-         "bundle/**",
+         // // Comment-202603261 applies.
+         // "bundle/**",
 
          ".venv/**",
          "cache/**",
