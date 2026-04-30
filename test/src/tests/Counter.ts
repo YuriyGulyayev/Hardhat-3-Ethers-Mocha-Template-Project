@@ -5,8 +5,8 @@ import {describe, before, after, it,} from "mocha";
 import type {NetworkConnection,} from "hardhat/types";
 import type {HardhatEthersSigner,} from "@nomicfoundation/hardhat-ethers/types";
 import hre from "hardhat";
-import * as EthersHelpers from "../../src/EthersHelpers.ts";
-import * as ContractDeploymentHelpers from "../../ignition/src/ContractDeploymentHelpers.ts";
+import * as EthersHelpers from "../../../src/EthersHelpers.ts";
+import * as ContractDeploymentHelpers from "../../../ignition/src/ContractDeploymentHelpers.ts";
 
 // #endregion
 // #region `describe`

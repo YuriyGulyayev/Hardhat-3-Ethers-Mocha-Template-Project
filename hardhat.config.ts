@@ -17,7 +17,7 @@ export default defineConfig(
       // #region `paths`
 
       paths: {
-         tests: "./test/src",
+         tests: "./test/src/tests",
       },
 
       // #endregion
