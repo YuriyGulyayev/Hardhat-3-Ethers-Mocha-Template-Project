@@ -5,7 +5,7 @@ main()
    prepare
    cd -- "${scriptFolderPath}.."
    local cutoffDateTime_
-   cutoffDateTime_="$( date '--date=7 days ago 00:00:00' --iso-8601=seconds )"
+   cutoffDateTime_="$( date '--date=14 days ago 00:00:00' --iso-8601=seconds )"
    readonly cutoffDateTime_
    export NODE_ENV=production
    npm outdated --production=false "--before=${cutoffDateTime_}" || (( "${?}" == 1 ))

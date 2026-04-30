@@ -6,7 +6,7 @@ main()
    cd -- "${scriptFolderPath}.."
    gio trash --force package-lock.json
    local cutoffDateTime_
-   cutoffDateTime_="$( date '--date=7 days ago 00:00:00' --iso-8601=seconds )"
+   cutoffDateTime_="$( date '--date=14 days ago 00:00:00' --iso-8601=seconds )"
    readonly cutoffDateTime_
    export NODE_ENV=production
    npm install --production=false "--before=${cutoffDateTime_}" --strict-peer-deps --prefer-dedupe
