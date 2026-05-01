@@ -16,7 +16,8 @@
       "cache/**",
       "artifacts/**",
       "types/**",
-      "coverage/**",
+      // ".gas-snapshot/**",
+      // "coverage/**",
       "ignition/deployments/**",
    ],
 

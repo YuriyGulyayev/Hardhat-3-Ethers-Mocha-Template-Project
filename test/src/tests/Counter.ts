@@ -33,7 +33,7 @@ describe("Counter", () => {
 
    before(
       async () => {
-         networkConnection_ = await hre.network.connect();
+         networkConnection_ = await hre.network.create();
          signers_ = await networkConnection_.ethers.getSigners();
          // console.info("%s", `202603193 ${signers_.length}");
       }
@@ -60,6 +60,7 @@ describe("Counter", () => {
       // await counter_.waitForDeployment();
       const contracts_ = await ( networkConnection_ ! ).networkHelpers.loadFixture(deployContracts_);
 
+      // todo-1 Retest this.
       // Issue. This Hardhat generated code fails when the network is configured for interval mining,
       // apparently because Hardhat forgets to wait for the transaction to get mined.
       // See discussions at:
@@ -78,6 +79,7 @@ describe("Counter", () => {
       const by_ = 5n;
       const contracts_ = await ( networkConnection_ ! ).networkHelpers.loadFixture(deployContracts_);
 
+      // todo-1 Retest this.
       // Issue. In case we are running against the in-process network, without this forced block creation,
       // near Comment-202603151, we would query events occurred before this test.
       await ( networkConnection_ ! ).provider.request({method: "evm_mine",});

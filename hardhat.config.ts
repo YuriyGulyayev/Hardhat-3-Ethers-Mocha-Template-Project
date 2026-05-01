@@ -35,12 +35,15 @@ export default defineConfig(
             production: {
                compilers: [
                   {
-                     // todo-2 When changing this, revisit ToDo-202605013-2.
+                     // [ToDo-202605051-2]
+                     // When changing this, take a look at ToDo-202605013-2.
+                     // [/ToDo-202605051-2]
                      version: "0.8.29",
 
                      settings: {
                         // [ToDo-202605013-2]
                         // Is this parameter going to eventually become the default?
+                        // When it happens, delete it.
                         // [/ToDo-202605013-2]
                         viaIR: true,
 
@@ -67,7 +70,7 @@ export default defineConfig(
             // [Comment-202603194]
             // This typically has to be `false` when running tests against an out-of-process network.
             // [/Comment-202603194]
-            parallel: Helpers.parseBooleanEnvironmentVariable("MOCHA_IS_PARALLEL", true),
+            parallel: Helpers.parseBooleanEnvironmentVariable("MOCHA_IS_PARALLEL", false),
 
             timeout: 24 * 60 * 60 * 1e3,
          },
@@ -122,7 +125,7 @@ export default defineConfig(
 
          // // We don't currently need any networks like these.
          // // But if we do, it could make sense to create separate configurations simular to `node` and `localhost`.
-         // hardhatEdrSimulatedL1: {
+         // HardhatEdrSimulatedL1: {
          //    type: "edr-simulated",
          //    chainType: "l1",
          //    // chainId: 31337,
@@ -132,7 +135,7 @@ export default defineConfig(
          //    // allowBlocksWithSameTimestamp: ,
          //    // mining: {},
          // },
-         // hardhatEdrSimulatedOp: {
+         // HardhatEdrSimulatedOp: {
          //    type: "edr-simulated",
          //    chainType: "op",
          //    // chainId: 31337,
@@ -142,7 +145,7 @@ export default defineConfig(
          //    // allowBlocksWithSameTimestamp: ,
          //    // mining: {},
          // },
-         // hardhatEdrSimulatedGeneric: {
+         // HardhatEdrSimulatedGeneric: {
          //    type: "edr-simulated",
          //    chainType: "generic",
          //    // chainId: 31337,
@@ -153,17 +156,16 @@ export default defineConfig(
          //    // mining: {},
          // },
 
-         // todo-0 Name networks title-cased, like "Sepolia". Also search for files named that way.
-         sepolia: {
+         Sepolia: {
             type: "http",
             chainType: "l1",
             chainId: 11155111,
             gasMultiplier: 1.1,
             accounts: [configVariable("ETHERS_MOCHA_TEMPLATE_PROJECT_DEVELOPMENT_ETHEREUM_ACCOUNT_1_PRIVATE_KEY"),],
-            // todo-0 Use a better URL, with an API key.
+            // todo-1 Use a better URL, with an API key.
             url: "https://ethereum-sepolia.publicnode.com",
 
-            // todo-2 Is this value good?
+            // todo-1 This is 10x the default. Is this value good?
             timeout: 200_000,
          },
       },

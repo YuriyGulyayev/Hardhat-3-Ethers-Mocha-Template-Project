@@ -8,7 +8,7 @@ export class Main implements AsyncDisposable {
    // public constructor() {}
 
    public async prepare() {
-      this._networkConnection = await hre.network.connect();
+      this._networkConnection = await hre.network.create();
    }
 
    public async [Symbol.asyncDispose]() {

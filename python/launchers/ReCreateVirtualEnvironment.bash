@@ -1,13 +1,13 @@
 #!/usr/bin/bash
 
-# This script creates a Python virtual environmnt.
-# Execute this script once.
-# Remember to execute it after cloning the repository.
+# This script creates a Python virtual environment.
+# It trashes any already existing one beforehand.
 
 main()
 {
    prepare
    cd -- "${scriptFolderPath}../.."
+   gio trash --force -- .venv
    python3 -m venv .venv
    playSuccessSound
 }

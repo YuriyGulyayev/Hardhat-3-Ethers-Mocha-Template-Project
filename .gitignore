@@ -1,6 +1,7 @@
 # [Comment-202603263]
 # Similar folders are listed in multiple places.
-# todo-0 Maybe replace this comment with similar comments for each folder, like Comment-202603122.
+# todo-2? Maybe replace this comment with similar comments for each folder, like Comment-202603122.
+# todo-2 Some entries below have comments near them. Make the comments numbered and reference them in other places.
 # [/Comment-202603263]
 
 # A correct way to ignore a file:
@@ -9,6 +10,7 @@
 # !/File.txt/**
 # todo-2 But ask Google and retest the above.
 
+# /package-lock.json
 /node_modules/
 
 # Comment-202603122 applies.
@@ -40,10 +42,14 @@
 /typescript/reports/
 /eslint/reports/
 
-# # Hardhat coverage reports.
+# # Hardhat gas snapshot files.
 # # [Comment-202604207]
-# # This is to be manually deleted instead of adding this to the Git repo.
+# # Delete this manually. Do not commit this to the Git repo.
 # # [/Comment-202604207]
+# /.gas-snapshot/
+
+# # Hardhat Solidity code coverage reports.
+# # Comment-202604207 applies.
 # /coverage/
 
 # # Hardhat Ignition default folder for deployments against an out-of-process Hardhat node.

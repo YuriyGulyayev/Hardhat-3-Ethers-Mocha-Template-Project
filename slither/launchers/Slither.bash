@@ -18,12 +18,12 @@ main()
    export NODE_ENV=production
    local -i slitherExitStatusCode_=0
 
-   # [ToDo-202603173-2]
+   # [ToDo-202603173-1]
    # As of Mar 2026, this doesn't work because Slither doesn't support Hardhat 3.
    # Let's hope they will add that support soon.
    # It could be necessary to pass the `--force` flag to Hardhat.
    # Revisit command line arguments. Consider moving most of them to the config file.
-   # [/ToDo-202603173-2]
+   # [/ToDo-202603173-1]
    { ./.venv/bin/slither --compile-custom-build 'npx hardhat build --build-profile production' --filter-paths /node_modules/ --show-ignored-findings --checklist . || slitherExitStatusCode_="${?}" ; } &>> "${slitherReport2FilePath_}"
 
    readonly slitherExitStatusCode_

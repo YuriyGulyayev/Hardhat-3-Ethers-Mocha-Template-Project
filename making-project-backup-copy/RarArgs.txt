@@ -1,0 +1,21 @@
+# Comment-202603263 applies.
+
+-r
+-x.git/*
+-xpackage-lock.json
+-xnode_modules/*
+
+# # Comment-202603122 applies.
+# -xdist/*
+
+# # Comment-202603261 applies.
+# -xbundle/*
+
+-x.venv/*
+-xcache/*
+-xartifacts/*
+-xtypes/*
+-xslither/reports/*
+-xsolhint/reports/*
+-xtypescript/reports/*
+-xeslint/reports/*

@@ -6,8 +6,8 @@ main()
    cd -- "${scriptFolderPath}../.."
    export NODE_ENV=production
 
-   # # Comment-202603194 applies.
-   # export MOCHA_IS_PARALLEL=???
+   # Comment-202603194 applies.
+   export MOCHA_IS_PARALLEL=true
 
    # [Comment-202603175]
    # By default, `network` is `default`. It's in-process.

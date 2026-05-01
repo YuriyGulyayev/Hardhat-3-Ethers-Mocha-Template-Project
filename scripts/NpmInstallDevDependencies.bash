@@ -3,12 +3,13 @@
 main()
 {
    prepare
+   (( "${#}" > 0 ))
    cd -- "${scriptFolderPath}.."
    local cutoffDateTime_
    cutoffDateTime_="$( date '--date=14 days ago 00:00:00' --iso-8601=seconds )"
    readonly cutoffDateTime_
    # export NODE_ENV=production
-   npm install "--before=${cutoffDateTime_}" --strict-peer-deps --prefer-dedupe
+   npm install "--before=${cutoffDateTime_}" --strict-peer-deps --prefer-dedupe --save-dev -- "${@}"
    playSuccessSound
 }
 
@@ -21,4 +22,4 @@ prepare()
    source "${scriptFolderPath}../shell-script-libs/ErrorHandling.bash"
 }
 
-main
+main "${@}"

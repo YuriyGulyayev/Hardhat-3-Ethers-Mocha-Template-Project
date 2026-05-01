@@ -3,12 +3,7 @@
 main()
 {
    prepare
-   # todo-0 Here and elsewhere, leave this condition alone.
-   if ! (( "${#}" == 1 && "${#1}" > 0 )) ; then
-      echo 'Invalid command line.'
-      playErrorSound
-      exit
-   fi
+   (( "${#}" == 1 && "${#1}" > 0 ))
    cd -- "${scriptFolderPath}.."
    export NODE_ENV=production
    npx hardhat keystore delete --dev -- "${1}"

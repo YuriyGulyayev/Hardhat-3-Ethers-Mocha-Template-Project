@@ -7,7 +7,7 @@ main()
    export NODE_ENV=production
    local -r outputFileName_="../Hardhat-3-Ethers-Mocha-Template-Project-Hardhat-Configuration.json"
    gio trash --force -- "${outputFileName_}"
-   npx hardhat run --build-profile production --no-compile --network sepolia scripts/OutputHardhatConfiguration.ts &>> "${outputFileName_}"
+   npx hardhat run --build-profile production --no-compile --network Sepolia scripts/OutputHardhatConfiguration.ts &>> "${outputFileName_}"
    playSuccessSound
 }
 

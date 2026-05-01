@@ -2,8 +2,8 @@
 
 import {network} from "hardhat";
 
-const {ethers} = await network.connect({
-   network: "hardhatEdrSimulatedOp",
+const {ethers} = await network.create({
+   network: "HardhatEdrSimulatedOp",
 
    // Issue. Isn't this already specified in the Hardhat config file?
    chainType: "op",

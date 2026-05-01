@@ -29,7 +29,7 @@ prepare()
 handleSigInt()
 {
    playSuccessSound
-   exit 0
+   exit
 }
 
 main

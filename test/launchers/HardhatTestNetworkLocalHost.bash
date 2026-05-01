@@ -6,8 +6,8 @@ main()
    cd -- "${scriptFolderPath}../.."
    export NODE_ENV=production
    
-   # Comment-202603194 applies.
-   export MOCHA_IS_PARALLEL=false
+   # # Comment-202603194 applies.
+   # export MOCHA_IS_PARALLEL=false
    
    npx hardhat test --build-profile production --network localhost
    playSuccessSound
