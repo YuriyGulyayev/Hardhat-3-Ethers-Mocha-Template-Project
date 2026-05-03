@@ -12,7 +12,7 @@
 
 - There is a script for each possible command you might want to execute. Avoid executing loose commands in the terminal, such as `npx hardhat test`.
 
-- I created this project on Ubuntu Cinnamon Linux 24.04 LTS. Some refactorings might be needed to get it working on a different Linux distro, Mac OS, or Windows Subsystem for Linux, and some more refactorings to get it working on Windows itself.
+- I created this project on Ubuntu Cinnamon Linux 24.04 LTS. Some refactorings might be needed to get things working on a different Linux distro, Mac OS, or Windows Subsystem for Linux, and some more refactorings to get it working on Windows itself.
 
 - Prerequisites. Linux of a recent version (I use Ubuntu Cinnamon 24.04 LTS); Node.JS 22+ (a Hardhat requirement); NPM of a recent version; Python 3 and PIP 3 of recent versions; an Integrated Development Environment, such as Visual Studio Code.
 
