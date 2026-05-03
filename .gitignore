@@ -4,12 +4,6 @@
 # todo-2 Some entries below have comments near them. Make the comments numbered and reference them in other places.
 # [/Comment-202603263]
 
-# A correct way to ignore a file:
-# /File.txt
-# !/File.txt/
-# !/File.txt/**
-# todo-2 But ask Google and retest the above.
-
 # /package-lock.json
 /node_modules/
 
