@@ -1,7 +1,3 @@
-# This is a thin header
-<h1 style="font-weight: 1;">This is a thin header</h1>
-<h3 style="font-weight: 1;">Numbered Comments</h3>
-
 ### Numbered Comments
 
 #### Introduction
