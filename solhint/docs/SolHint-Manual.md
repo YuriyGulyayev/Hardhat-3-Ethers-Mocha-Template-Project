@@ -1,6 +1,7 @@
 ### How to Execute SolHint
 
 - Execute:
+
 ```bash
 ./solhint/launchers/SolHint.bash
 ```
@@ -12,7 +13,8 @@
 - If the report file already exists it will be renamed to `SolHintReport1.txt`. If the latter also exists it will be trashed beforehand.
 
 - To compare the last 2 reports, execute:
-```
+
+```bash
 ./solhint/launchers/DiffSolHintReports.bash
 ```
 

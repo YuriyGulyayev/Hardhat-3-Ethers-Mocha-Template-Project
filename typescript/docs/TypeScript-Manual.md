@@ -5,6 +5,7 @@
 ### How to Type-Check All TypeScript Sources
 
 - Execute:
+
 ```bash
 ./typescript/launchers/TypeCheck.bash
 ```
@@ -16,6 +17,7 @@
 - If the report file already exists it will be renamed to `TypeCheckReport1.txt`. If the latter also exists it will be trashed beforehand.
 
 - To compare the last 2 reports, execute:
-```
+
+```bash
 ./typescript/launchers/DiffTypeCheckReports.bash
 ```

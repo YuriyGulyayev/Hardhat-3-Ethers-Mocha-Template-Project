@@ -1,6 +1,7 @@
 ### How to Execute ESLint
 
 - Execute:
+
 ```bash
 ./eslint/launchers/EsLint.bash
 ```
@@ -12,7 +13,8 @@
 - If the report file already exists it will be renamed to `EsLintReport1.txt`. If the latter also exists it will be trashed beforehand.
 
 - To compare the last 2 reports, execute:
-```
+
+```bash
 ./eslint/launchers/DiffEsLintReports.bash
 ```
 
