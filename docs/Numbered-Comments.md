@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="50">
-  <text x="0" y="30" font-family="Arial" font-weight="200" font-size="24">
+  <text x="0" y="30" font-family="Arial" font-weight="200" font-size="34">
     Thin Header Example
   </text>
 </svg>
