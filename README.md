@@ -124,7 +124,7 @@ The Hardhat project initialization wizard has created the tests. I have refactor
 
 - When Ignition deploys contracts to an out-of-process network, it creates deployment state folders under `ignition/deployments`.\
 Pay attention to the warning printed near Comment-202603205.\
-The Ignition deployment state folders should, in most cases, be committed to the Git repo, except for the `ignition/deployments/chain-31337` folder, which, according to Comment-202604207, should be manually deleted.
+The Ignition deployment state folders should, in most cases, be committed to the Git repo, except for the `ignition/deployments/chain-31337` folder, which, according to Comment-202604207, you should manually delete.
 
 ### Deploying Smart Contracts
 
